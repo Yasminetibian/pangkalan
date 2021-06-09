@@ -2,8 +2,7 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.4.0
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
-    reserved.
+    <strong>Copyright &copy; 2021 <a href="">Kecamatan Kintap</a>.</strong> LPG
   </footer>
 
   <!-- Control Sidebar -->
@@ -123,9 +122,10 @@ $(document).ready(function(){
 
     <!-- Select2 -->
     <script src="<?php echo base_url() ?>assets/plugins/select2/js/select2.full.min.js"></script>
+    
 
     <script>
-      <?php
+        <?php
       $status = $this->session->flashdata('status');
       if ($status) : ?>
         Swal.fire({

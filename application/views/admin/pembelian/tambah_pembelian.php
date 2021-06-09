@@ -27,8 +27,43 @@
             <!-- form start -->
             <form role="form" autocomplete="off" method="POST" action="<?php echo base_url('pembelian/proses_tambah_pembelian') ?>" enctype="multipart/form-data">
               <div class="box-body">
+               <div class="form-group">
+                  <label for="id">ID</label>
+                  <input type="" name="id" class="form-control" id="id" placeholder="" required=""> <br>
+                  <input type="button" value="Cek" style="" class="btn btn-primary" 
+                  onclick="isi_otomatis()">
+                  
+                  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.mis.js" type="text/javascript"></script>
+
+                  <script type="text/javascript">
+                    function isi_otomatis() {
+                      var id = document.getElementById('id').value;
+                      //var id = document;
+                        
+                        $.ajax({
+                          type  :'POST',
+                          url:'<?php echo base_url('Welcome/ambil_data1')?>',
+                          data:"id="+id,
+                        }).success(function(data){
+                          obj=data;
+                          $('#id').val(obj.id);
+                          $('#no_kk').val(obj.no_kk);
+                          $('#nama_kepala').val(obj.nama_kepala);
+                       });
+                    }
+
+                  </script>
+                </div>
+                <div class="form-group">
+                  <label for="id">Nomor Kartu Keluarga</label>
+                  <input type="number" name="no_kk" class="form-control" id="no_kk" placeholder="Nomor Kartu Keluarga" required="" readonly=" ">
+                </div>
+                <div class="form-group">
+                  <label for="id">Nama Kepala Keluarga</label>
+                  <input type="text" name="nama_kepala" class="form-control" id="nama_kepala" placeholder="Nama Kepala Keluarga " required="" readonly=" ">
+                </div>
               <div class="form-group">
-                      <label for="alamat">Pangkalan</label>
+                      <label for="alamat">Nama Pangkalan</label>
                       <select name="id_pangkalan" class="form-control" style="width: 100%;">
                         <option selected="selected">--Pilih Pangkalan--</option>
                         <?php foreach ($pangkalan as $key) : ?>
@@ -37,17 +72,12 @@
                       </select>
                 </div>
                 <div class="form-group">
-                      <label for="alamat">No KK</label>
-                      <select name="no_kk" class="form-control" style="width: 100%;">
-                        <option selected="selected">--Pilih No KK--</option>
-                        <?php foreach ($masyarakat as $key) : ?>
-                          <option value="<?php echo $key->no_kk ?>"><?php echo $key->no_kk ?></option>
-                        <?php endforeach; ?>
-                      </select>
+                  <label for="id">Tanggal pembelian</label>
+                  <input type="date" name="tgl_pembelian" class="form-control" id="tgl_pembelian" placeholder="Tanggal pembelian" required="">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Tanggal pembelian</label>
-                  <input type="date" name="tgl_pembelian" class="form-control" id="exampleInputPassword1" placeholder="Tanggal pembelian" required="">
+                  <label for="id">Jumlah Tabung</label>
+                  <input type="number" name="jum_tabung" class="form-control" id="jum_tabung" placeholder="Jumlah Tabung" required="">
                 </div>
               </div>
               <!-- /.box-body -->

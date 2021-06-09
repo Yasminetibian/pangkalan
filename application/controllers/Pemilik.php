@@ -19,6 +19,17 @@ class Pemilik extends CI_Controller
 		$this->load->view('komponen/footer');
 	}
 
+    public function getpemilik()
+    {
+        $data['title'] = 'Data pemilik';
+        $data['data1'] = $this->pemilik->getpemilik();
+        //$data['data'] = $this->pangkalan->getpangkalan()->result();
+        $this->load->view('komponen/head', $data);
+        $this->load->view('komponen/menu');
+        $this->load->view('admin/pemilik/indexpemilik');
+        $this->load->view('komponen/footer');
+    }
+
 	public function tambah_pemilik()
     {
         $data['title'] = 'Form Data pemilik';
@@ -56,6 +67,8 @@ class Pemilik extends CI_Controller
         $this->load->view('admin/pemilik/edit_pemilik');
         $this->load->view('komponen/footer');
     }
+
+    
 
     public function proses_edit_pemilik()
     {

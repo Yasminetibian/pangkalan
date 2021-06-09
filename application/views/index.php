@@ -18,8 +18,15 @@
 <!-- iCheck -->
 <link rel="stylesheet" href="<?=base_url()?>assets/plugins/iCheck/square/blue.css">
 
+
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
+<style>
+    .swal2-popup {
+      font-size: 1.6rem !important;
+    }
+
+  </style>
 
 <body class="hold-transition login-page" style="background-color: lightblue; background-image:url(spkraskin/home.jpg);">
 <div class="login-box">
@@ -75,6 +82,19 @@
 </div>
 
 </div>
+<script src="<?php echo base_url() ?>assets/sweet/sweetalert2.all.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/sweet/sweetalert2.min.css"></script>
 
+    <script>
+        <?php
+        $status = $this->session->flashdata('status');
+        if ($status) : ?>
+            Swal.fire({
+                icon: '<?php echo $status['type'] ?>',
+                title: 'Status',
+                text: '<?php echo $status['message'] ?>',
+            })
+        <?php endif; ?>
+    </script>
 </body>
 </html>

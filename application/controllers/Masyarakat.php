@@ -1,31 +1,41 @@
 <?php
 class Masyarakat extends CI_Controller
 {
-	function __construct()
-	{
-		parent::__construct();
-		$this->load->model('M_masyarakat', 'masyarakat');
-		$this->load->model('M_desa', 'desa');
-		$this->load->model('M_akun', 'akun');
+    function __construct()
+    {
+        parent::__construct();
+        $this->load->model('M_masyarakat', 'masyarakat');
+        $this->load->model('M_desa', 'desa');
+        //$this->load->model('M_akun', 'akun');
         $this->load->model('M_cek', 'cek');
-	}
+    }
 
-	public function index()
-	{
-		$data['title'] = 'Data masyarakat';
-		$data['data'] = $this->masyarakat->lihat_masyarakat();
-		$this->load->view('komponen/head', $data);
-		$this->load->view('komponen/menu');
-		$this->load->view('admin/masyarakat/index');
-		$this->load->view('komponen/footer');
-	}
+    public function index()
+    {
+        $data['title'] = 'Data masyarakat';
+        $data['data'] = $this->masyarakat->lihat_masyarakat();
+        $this->load->view('komponen/head', $data);
+        $this->load->view('komponen/menu');
+        $this->load->view('admin/masyarakat/index');
+        $this->load->view('komponen/footer');
+    }
+
+    public function indexmasyarakat()
+    {
+        $data['title'] = 'Data masyarakat';
+        $data['data'] = $this->masyarakat->lihat_masyarakat();
+        $this->load->view('komponen/head', $data);
+        $this->load->view('komponen/menu');
+        $this->load->view('admin/masyarakat/indexmasyarakat');
+        $this->load->view('komponen/footer');
+    }
 
    
 
-	public function tambah_masyarakat()
+    public function tambah_masyarakat()
     {
         $data['desa'] = $this->desa->lihat_desa();
-        $data['akun'] = $this->akun->lihat_akun();
+       // $data['akun'] = $this->akun->lihat_akun();
         $data['title'] = 'Form Data masyarakat';
         $this->load->view('komponen/head', $data);
         $this->load->view('komponen/menu');
@@ -61,13 +71,7 @@ class Masyarakat extends CI_Controller
 
         // $kode = $this->akun->ambil_kode();
         // $max = $kode->no_urut + 1;
-        $data = array(            
-            'id_akun' => '',
-            'username' => $_POST['no_kk'],
-            'password' => md5($_POST['no_kk']),
-            'level' => 'Masyarakat',
-            'status' => 'Aktif',
-        );
+       
         $masyarakat = array(
             'no_kk' => $_POST['no_kk'],     
             'nama_kepala' => $_POST['nama_kepala'],
@@ -83,7 +87,7 @@ class Masyarakat extends CI_Controller
         {
             $this->session->set_flashdata('status', ['type' => 'warning', 'message' => 'Data Sudah Ada']);redirect('masyarakat/tambah_masyarakat');
         } else {
-            if ($this->masyarakat->proses_tambah_masyarakat($data, $masyarakat)) {
+            if ($this->masyarakat->proses_tambah_masyarakat($masyarakat)) {
                 $this->session->set_flashdata('status', ['type' => 'success', 'message' => 'Data Berhasil Disimpan']);
             } else {
                 $this->session->set_flashdata('status', ['type' => 'error', 'message' => 'Data Gagal Disimpan']);
@@ -97,7 +101,7 @@ class Masyarakat extends CI_Controller
     public function edit_masyarakat($no_kk)
     {
         $data['desa'] = $this->desa->lihat_desa();
-        $data['akun'] = $this->akun->lihat_akun();
+        //$data['akun'] = $this->akun->lihat_akun();
         $data['title'] = 'Form Data masyarakat';
         $data['data'] = $this->masyarakat->lihat_masyarakat(decrypt_url($no_kk));
         $this->load->view('komponen/head', $data);
@@ -106,10 +110,22 @@ class Masyarakat extends CI_Controller
         $this->load->view('komponen/footer');
     }
 
+    public function detail_masyarakat($no_kk)
+    {
+        $data['desa'] = $this->desa->lihat_desa();
+        //$data['akun'] = $this->akun->lihat_akun();
+        $data['title'] = 'Form Data masyarakat';
+        $data['data'] = $this->masyarakat->lihat_masyarakat(decrypt_url($no_kk));
+        $this->load->view('komponen/head', $data);
+        $this->load->view('komponen/menu');
+        $this->load->view('admin/masyarakat/detail_masyarakat');
+        $this->load->view('komponen/footer');
+    }
+
     public function proses_edit_masyarakat()
     {
         $karakter = 'abcdefghijklmnopqrst1234567890';
-        $data1 = substr(str_shuffle($karakter), 0, 5);
+        $data1 = substr(str_shuffle($karakter), 0, 10);
 
         $this->load->library('ciqrcode'); //pemanggilan library QR CODE
 
@@ -131,14 +147,6 @@ class Masyarakat extends CI_Controller
         $params['savename'] = FCPATH.$config['imagedir'].$no_kk; //simpan image QR CODE ke folder assets/images/
         $this->ciqrcode->generate($params);
 
-
-         $data = array(            
-            'id_akun' => '',
-            'username' => $_POST['no_kk'],
-            'password' => md5($_POST['no_kk']),
-            'level' => 'Admin',
-            'status' => 'Aktif',
-        );
         $masyarakat = array(
             'no_kk' => $_POST['no_kk'],     
             'nama_kepala' => $_POST['nama_kepala'],
@@ -148,10 +156,10 @@ class Masyarakat extends CI_Controller
             'id_barcode' => $data1,
             'alamat' => $_POST['alamat'],
         );
-        $id_akun = $_POST['id_akun'];
+        //$id_akun = $_POST['id_akun'];
         $no_kk = $_POST['no_kk_lama'];
 
-        if ($this->masyarakat->proses_edit_masyarakat($data, $id_akun,$masyarakat,$no_kk)) {
+        if ($this->masyarakat->proses_edit_masyarakat($masyarakat,$no_kk)) {
             $this->session->set_flashdata('status', ['type' => 'success', 'message' => 'Data Berhasil Disimpan']);
         } else {
             $this->session->set_flashdata('status', ['type' => 'error', 'message' => 'Data Gagal Disimpan']);
@@ -159,16 +167,18 @@ class Masyarakat extends CI_Controller
         redirect('masyarakat/');
     }
 
-     public function hapus_petugas()
+
+
+     public function hapus_masyarakat()
     {
-        $id_petugas = $_GET['id'];
-        $data = $this->petugas->lihat_petugas($id_petugas);
-        $id_akun = $data->id_akun;
-        if ($this->petugas->hapus_petugas($id_akun,$id_petugas)) {
+        $no_kk = $_GET['id'];
+        $data = $this->masyarakat->lihat_masyarakat($no_kk);
+        //$id_akun = $data->id_akun;
+        if ($this->masyarakat->hapus_masyarakat($no_kk)) {
             $this->session->set_flashdata('status', ['type' => 'success', 'message' => 'Data Berhasil Dihapus']);
         } else {
             $this->session->set_flashdata('status', ['type' => 'error', 'message' => 'Data Gagal Dihapus']);
         }
-        redirect('petugas/');
+        redirect('masyarakat/');
     }
  }

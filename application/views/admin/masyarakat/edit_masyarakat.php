@@ -31,14 +31,14 @@
                   <label for="exampleInputEmail1">No KK</label>
                   <input type="text" value="<?php echo $data->no_kk ?>"name="no_kk_lama" class="form-control"  placeholder="No KK" required="">
                   <input type="hidden" value="<?php echo $data->no_kk ?>"name="no_kk" class="form-control"  placeholder="No KK" required="">
-                  <input type="hidden" value="<?php echo $data->id_akun ?>" name="id_akun" class="form-control" required="">
+                 
                 </div>
                 <div class="form-group">
                       <label for="alamat">Desa</label>
                       <select name="id_desa" class="form-control" style="width: 100%;">
                         <option selected="selected">--Pilih Desa--</option>
                         <?php foreach ($desa as $key) : ?>
-                          <option value="<?php echo $key->id_desa ?>"><?php echo $key->desa ?></option>
+                          <option value="<?php echo $key->id_desa ?>"<?=$key->id_desa == $key->id_desa ? "selected" : null ?>><?php echo $key->desa ?></option>
                         <?php endforeach; ?>
                       </select>
                 </div>

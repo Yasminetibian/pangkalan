@@ -20,6 +20,17 @@ class Pangkalan extends CI_Controller
 		$this->load->view('komponen/footer');
 	}
 
+     public function getpangkalan()
+    {
+        $data['title'] = 'Data Pangkalan';
+        $data['data1'] = $this->pangkalan->getpangkalan();
+        //$data['data'] = $this->pangkalan->getpangkalan()->result();
+        $this->load->view('komponen/head', $data);
+        $this->load->view('komponen/menu');
+        $this->load->view('admin/pangkalan/indexpangkalan');
+        $this->load->view('komponen/footer');
+    }
+
 	public function tambah_pangkalan()
     {
         $data['desa'] = $this->desa->lihat_desa();
@@ -69,7 +80,7 @@ class Pangkalan extends CI_Controller
     public function proses_edit_pangkalan()
     {
         $data = array(        
-            'id_pangkalan' => '',
+            //'id_pangkalan' => '',
             'nama_pangkalan' => $_POST['nama_pangkalan'],
             'alamat_pangkalan' => $_POST['alamat_pangkalan'],
             'no_telp_pangkalan' => $_POST['no_telp_pangkalan'],

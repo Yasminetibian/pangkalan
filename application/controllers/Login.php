@@ -30,13 +30,38 @@ class Login extends CI_Controller
 				$this->session->set_userdata($data);
 				$this->session->set_flashdata('status', ['type' => 'success', 'message' => 'Anda Berhasil Login']);
 				redirect('dashboard/');
-			}elseif ($dt->level =='Admin') {
+			}else if ($dt->level =='Desa') {
+				$data = array(
+					'id_akun' => $dt->id_akun,
+					'status' => 'Login',
+					'level' => $dt->level
+				);
+				$this->session->set_userdata($data);
+				$this->session->set_flashdata('status', ['type' => 'success', 'message' => 'Anda Berhasil Login']);
+				redirect('dashboard/');
 				# code...
+			}else if ($dt->level =='Pemilik') {
+				$data = array(
+					'id_akun' => $dt->id_akun,
+					'status' => 'Login',
+					'level' => $dt->level
+				);
+				$this->session->set_userdata($data);
+				$this->session->set_flashdata('status', ['type' => 'success', 'message' => 'Anda Berhasil Login']);
+				redirect('dashboard/');
+			}else if ($dt->level =='Pangkalan') {
+				$data = array(
+					'id_akun' => $dt->id_akun,
+					'status' => 'Login',
+					'level' => $dt->level
+				);
+				$this->session->set_userdata($data);
+				$this->session->set_flashdata('status', ['type' => 'success', 'message' => 'Anda Berhasil Login']);
+				redirect('dashboard/');
 			}else{
 				$this->session->set_flashdata('status', ['type' => 'error', 'message' => 'Username atau password salah !!']);
 				redirect('login');
-			}
-			
+			}		
 		}else{
 			$this->session->set_flashdata('status', ['type' => 'error', 'message' => 'Username atau password salah !!']);
 			redirect('login');

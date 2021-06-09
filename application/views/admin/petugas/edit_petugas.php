@@ -46,7 +46,7 @@
                       <select name="id_desa" class="form-control" style="width: 100%;">
                         <option selected="selected">--Pilih Desa--</option>
                         <?php foreach ($desa as $key) : ?>
-                          <option value="<?php echo $key->id_desa ?>"><?php echo $key->desa ?></option>
+                          <option value="<?php echo $key->id_desa ?>"<?=$key->id_desa == $key->id_desa ? "selected" : null ?>><?php echo $key->desa ?></option>
                         <?php endforeach; ?>
                       </select>
                 </div>

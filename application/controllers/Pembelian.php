@@ -89,4 +89,5 @@ class Pembelian extends CI_Controller
         }
         redirect('pembelian/');
     }
+
  }

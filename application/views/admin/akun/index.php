@@ -19,6 +19,10 @@
           <!-- /.box -->
           <div class="box">
             <div class="box-header">
+            <div >
+            <!-- <h3 class="box-title"></h3> -->
+            <a href="<?php echo base_url('akun/tambah_akun') ?>"><button type="button" class="btn  btn-outline-primary btn-sm"><i class="fa fa-plus"></i> <?php echo $title ?></button></a>
+          </div>
             <!-- <h3 class="box-title"></h3> -->
           
           </div>

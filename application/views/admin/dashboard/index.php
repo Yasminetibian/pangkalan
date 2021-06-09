@@ -36,7 +36,7 @@
 						<!-- /.card-header -->
 						<div class="card-body text-center">
 							<h4>SISTEM INFROMASI PENYALURAN GAS LPG</h4>
-							<p>PEMERINTAH KABUPATEN TANAH LAUT</p>
+							<p>PEMERINTAH KABUPATEN TANAH LAUT KECAMATAN KINTAP</p>
 
 							<!-- /.card-body -->
 						</div>

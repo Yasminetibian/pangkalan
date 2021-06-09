@@ -28,12 +28,9 @@
                 <thead>
                 <tr>
                   <th>No</th>
+                  <th>ID Kartu Pengenal</th>
                   <th>Nama Kepala Keluarga</th>
-                  <th>Username</th>
-                  <th>No KK</th>
-                  <th>Alamat</th>
-                  <th>Desa</th>
-                  <th>Rt</th>                   
+                  <th>No KK</th>                   
                   <th>Aksi</th>
                 </tr>
                 </thead>
@@ -44,14 +41,18 @@
                     ?>
                       <tr>
                         <td><?php echo $no++ ?></td>
+                        <td><?php echo $key->id_barcode ?></td>
                         <td><?php echo $key->nama_kepala ?></td>
-                        <td><?php echo $key->username ?></td>
-                        <td><?php echo $key->no_kk ?></td>
-                        <td><?php echo $key->alamat ?></td>
-                        <td><?php echo $key->desa ?></td>  
-                        <td><?php echo $key->rt ?></td>                   
+                        <td><?php echo $key->no_kk ?></td> 
+                                         
                        <td style="text-align: center;">
-                          <a href="<?php echo base_url('cetak/index/' . encrypt_url($key->no_kk)) ?>">
+                          <a href="<?php echo base_url('masyarakat/detail_masyarakat/' . encrypt_url($key->no_kk)) ?>">
+                            <button title="Detail Data" class="btn  btn-outline-success btn-sm">
+                           <i class="fa fa-eye"></i>
+                         </button>
+                         </a>
+
+                          <a href="<?php echo base_url('cetak/pdf/' . encrypt_url($key->no_kk)) ?>">
                             <button title="Cetak" class="btn  btn-outline-success btn-sm">
                            <i class="fa fa-print"></i>
                          </button>
@@ -61,10 +62,12 @@
                            <i class="fa fa-edit"></i>
                          </button>
                          </a>
+
+                        
                    <!--      <br>
                       |
                        <br> -->
-                        <a id="btn-hapus" onclick="konfirmasi('Apakah anda yakin menghapus data ini ?',<?php echo $key->no_kk ?>);" data-href="<?php echo base_url('pemilik/hapus_pemilik?id=') ?>">
+                        <a id="btn-hapus" onclick="konfirmasi('Apakah anda yakin menghapus data ini ?',<?php echo $key->no_kk ?>);" data-href="<?php echo base_url('masyarakat/hapus_masyarakat?id=') ?>">
                         <button title="Hapus Data" class="btn  btn-outline-danger btn-sm">
                           <i class="fa fa-trash"></i>
                         </button>
@@ -76,12 +79,9 @@
                 <tfoot>
                 <tr>
                  <th>No</th>
+                 <th>ID Kartu Pengenal</th>
                   <th>Nama Kepala Keluarga</th>
-                  <th>Username</th>
-                  <th>No KK</th>
-                  <th>Alamat</th>
-                  <th>Desa</th>
-                  <th>Rt</th>                   
+                  <th>No KK</th>                  
                   <th>Aksi</th>
                 </tr>
                 </tfoot>

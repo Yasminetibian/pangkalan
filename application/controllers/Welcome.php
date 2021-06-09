@@ -22,4 +22,11 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('welcome_message');
 	}
+
+	public	function ambil_data1()
+	{
+		$id=$this->input->post('id');
+		echo $result = $this->pembelian->ambil_data('$id')->row();
+	}
+
 }

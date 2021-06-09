@@ -27,4 +27,10 @@ class M_pembelian extends CI_Model
 		$this->db->where('id_pembelian', $id_pembelian);
 		return $this->db->delete('pembelian');
 	}
+
+	public function ambil_data($id)
+    {
+        $query=$this->db->query("SELECT * FROM masyarakat WHERE id_barcode=$id");
+        return $query();
+    }
 }

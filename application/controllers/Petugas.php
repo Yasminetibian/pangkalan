@@ -38,7 +38,7 @@ class Petugas extends CI_Controller
             'id_akun' => '',
             'username' => $_POST['username'],
             'password' => md5($_POST['password']),
-            'level' => 'Admin',
+            'level' => 'Desa',
             'status' => 'Aktif',
         );
         $petugas = array(

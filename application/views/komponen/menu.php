@@ -4,7 +4,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="<?=base_url()?>assets/dist/img/photo1.png" class="img-circle" alt="User Image">
+          <img  src="<?php echo base_url() ?>assets/file/Tanah laut.png">
         </div>
         <div class="pull-left info">
           <p>SILPG </p>
@@ -23,8 +23,11 @@
       </form>
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
+
+        
+      <?php if($this->fungsi->user_login()->level == 'Admin' ) { ?>
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">MENU</li>       
+        <li class="header">MENU ADMIN</li>       
         <li>
           <a href="<?=site_url('dashboard')?>">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
@@ -37,6 +40,12 @@
           </a>
         </li>
 
+         <li>
+          <a href="<?=site_url('pemilik')?>">
+            <i class="fa fa-user"></i> <span>Pemilik</span>
+          </a>
+        </li>
+
 
         <li>
           <a href="<?=site_url('masyarakat')?>">
@@ -44,13 +53,13 @@
           </a>
         </li>
 
-        <li>  
-          <a href="<?=site_url('pemilik')?>">
-            <i class="fa fa-user "></i> <span>Pemilik</span>
+         <li>
+          <a href="<?=site_url('desa')?>">
+            <i class="fa fa-table "></i> <span>Desa</span>
           </a>
         </li>
-
-        <li>
+    
+       <li>
           <a href="<?=site_url('pembelian')?>">
             <i class="fa fa-money "></i> <span>Pembelian</span>
           </a>
@@ -69,6 +78,83 @@
         </li>
         </li>
         </ul>
+        <?php }  ?>
+
+        <?php if($this->fungsi->user_login()->level == 'Desa' ) { ?>
+        <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">MENU DESA</li> 
+          <li>
+          <a href="<?=site_url('pangkalan')?>">
+            <i class="fa fa-home "></i> <span>Pangkalan</span>
+          </a>
+        </li>
+
+         <li>  
+          <a href="<?=site_url('pemilik')?>">
+            <i class="fa fa-user "></i> <span>Pemilik</span>
+          </a>
+        </li>
+        <li>  
+          <a href="<?=site_url('masyarakat')?>">
+            <i class="fa fa-users "></i> <span>Masyarakat</span>
+          </a>
+        </li>
+
+      </li>
+      </ul>
+
+        <?php }  ?>
+
+        <?php if($this->fungsi->user_login()->level == 'Pemilik' ) { ?>
+        <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">MENU PEMILIK</li> 
+          <li>
+          <a href="<?=site_url('pangkalan/getpangkalan')?>">
+            <i class="fa fa-home "></i> <span>Pangkalan</span>
+          </a>
+        </li>
+
+         <li>  
+          <a href="<?=site_url('pemilik/getpemilik')?>">
+            <i class="fa fa-user "></i> <span>Pemilik</span>
+          </a>
+        </li>
+      </li>
+      </ul>
+
+      <?php }  ?>
+
+      <?php if($this->fungsi->user_login()->level == 'Pangkalan' ) { ?>
+        <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">MENU PANGKALAN</li> 
+          <li>
+          <a href="<?=site_url('pembelian')?>">
+            <i class="fa fa-money "></i> <span>Pembelian</span>
+          </a>
+        </li>
+
+         <li>
+          <a href="<?=site_url('pangkalan/getpangkalan')?>">
+            <i class="fa fa-home "></i> <span>Pangkalan</span>
+          </a>
+        </li>
+
+         <!-- <li>  
+          <a href="<?=site_url('pemilik/getpemilik')?>">
+            <i class="fa fa-user "></i> <span>Pemilik</span>
+          </a>
+        </li> -->
+
+        <li>  
+          <a href="<?=site_url('masyarakat/indexmasyarakat')?>">
+            <i class="fa fa-users "></i> <span>Masyarakat</span>
+          </a>
+        </li>
+
+      </li>
+      </ul>
+    <?php }  ?>
+
     </section>
     <!-- /.sidebar -->
   </aside>

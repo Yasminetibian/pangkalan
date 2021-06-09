@@ -20,11 +20,7 @@
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="<?=base_url()?>assets/dist/css/skins/_all-skins.min.css">
 
-  <style>
-    .swal2-popup {
-      font-size: 1.6rem !important;
-    }
-  </style>
+
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -36,6 +32,12 @@
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+        <style>
+    .swal2-popup {
+      font-size: 1.6rem !important;
+    }
+
+  </style>
 </head>
 <body class="hold-transition skin-blue-light sidebar-mini">
 <div class="wrapper">
@@ -46,16 +48,21 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>GAS</b>LPG</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Penyaluran</b></span>
+      <span class="logo-lg"><b>LPG 3 KG</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
     <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-          <li class="dropdown user user-menu">
+          <li class="nav-item">
+          <a id="btn-logout" class="nav-link" onclick="logout('Apakah Anda Yakin Mau Keluar ?');" data-href="<?php echo base_url('Login/Logout') ?>">
+            <i class="fa fa-power-off"> Sign out</i>
+          </a>
+        </li>
+          <!-- <li class="dropdown user user-menu">
            <a href="<?=site_url('login/logout')?>" class="fa fa-power-off" id="btn-logout"> Sign out</a>     
-          </li>        
+          </li> -->        
         </ul>
       </div>
     </nav>

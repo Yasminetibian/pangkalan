@@ -29,7 +29,7 @@
               <div class="box-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Nama pangkalan</label>
-                  <input type="text" value="<?php echo $data->id_pangkalan ?>" name="nama_pangkalan" class="form-control"  placeholder="Nama pangkalan" required="">
+                  <input type="text" value="<?php echo $data->nama_pangkalan ?>" name="nama_pangkalan" class="form-control"  placeholder="Nama pangkalan" required="">
                   <input type="hidden" value="<?php echo $data->id_pangkalan ?>" name="id_pangkalan" class="form-control"  placeholder="id" required="">
                 </div>
                 <div class="form-group">
@@ -49,7 +49,7 @@
                       <select name="id_desa" class="form-control" style="width: 100%;">
                         <option selected="selected">--Pilih Desa--</option>
                         <?php foreach ($desa as $key) : ?>
-                          <option value="<?php echo $key->id_desa ?>"><?php echo $key->desa ?></option>
+                          <option value="<?php echo $key->id_desa ?>"<?=$key->id_desa == $key->id_desa ? "selected" : null ?>><?php echo $key->desa ?></option>
                         <?php endforeach; ?>
                       </select>
                 </div>
@@ -58,7 +58,7 @@
                       <select name="id_akun" class="form-control" style="width: 100%;">
                         <option selected="selected">--Pilih Username--</option>
                         <?php foreach ($akun as $key) : ?>
-                          <option value="<?php echo $key->id_akun ?>"><?php echo $key->username ?></option>
+                          <option value="<?php echo $key->id_akun ?>"<?=$key->id_akun == $key->id_akun ? "selected" : null ?>><?php echo $key->username ?></option>
                         <?php endforeach; ?>
                       </select>
                 </div>
@@ -67,7 +67,7 @@
                       <select name="id_pemilik" class="form-control" style="width: 100%;">
                         <option selected="selected">--Pilih Pemilik--</option>
                         <?php foreach ($pemilik as $key) : ?>
-                          <option value="<?php echo $key->id_pemilik ?>"><?php echo $key->nama_pemilik ?></option>
+                          <option value="<?php echo $key->id_pemilik ?>"<?=$key->id_pemilik == $key->id_pemilik ? "selected" : null ?>><?php echo $key->nama_pemilik ?></option>
                         <?php endforeach; ?>
                       </select>
                 </div>

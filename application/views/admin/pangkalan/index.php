@@ -20,6 +20,9 @@
             <div class="box-header">
             <!-- <h3 class="box-title"></h3> -->
             <a href="<?php echo base_url('pangkalan/tambah_pangkalan') ?>"><button type="button" class="btn  btn-outline-primary btn-sm"><i class="fa fa-plus"></i> <?php echo $title ?></button></a>
+            <a href="<?=site_url('laporan/pdf') ?>"><button type="button" class="btn  btn-outline-primary btn-sm">
+                    <i class="fa fa-print"> </i> Laporan
+                </a>
           </div>
             <!-- /.box-header -->
             <div class="box-body">
