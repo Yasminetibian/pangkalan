@@ -100,6 +100,12 @@
           </a>
         </li>
 
+        <li>  
+          <a href="<?=site_url('Desa')?>">
+            <i class="fa fa-user-md "></i> <span>Desa</span>
+          </a>
+        </li>
+
       </li>
       </ul>
 
