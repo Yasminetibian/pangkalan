@@ -46,7 +46,8 @@ class Masyarakat extends CI_Controller
 
     public function proses_tambah_masyarakat()
     {
-        $karakter = 'abcdefghijklmnopqrst1234567890';
+		// $karakter = 'abcdefghijklmnopqrst1234567890';
+		$karakter = '1234567890';
         $data1 = substr(str_shuffle($karakter), 0, 10);
 
         $this->load->library('ciqrcode'); //pemanggilan library QR CODE
